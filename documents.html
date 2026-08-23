@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+  >
+
+  <meta
+    name="description"
+    content="Your secure Student Academic Vault document storage."
+  >
+
+  <title>Document Vault | Student Academic Vault</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="vault-page">
+
+  <!-- ======================================================
+       BACKGROUND
+       ====================================================== -->
+
+  <div class="network-background" aria-hidden="true">
+    <div class="network-grid"></div>
+
+    <span class="node n1"></span>
+    <span class="node n2"></span>
+    <span class="node n3"></span>
+    <span class="node n4"></span>
+    <span class="node n5"></span>
+    <span class="node n6"></span>
+    <span class="node n7"></span>
+    <span class="node n8"></span>
+    <span class="node n9"></span>
+
+    <span class="network-line l1"></span>
+    <span class="network-line l2"></span>
+    <span class="network-line l3"></span>
+    <span class="network-line l4"></span>
+    <span class="network-line l5"></span>
+    <span class="network-line l6"></span>
+  </div>
+
+
+  <!-- ======================================================
+       HEADER
+       ====================================================== -->
+
+  <header class="site-header vault-header">
+
+    <a class="brand" href="dashboard.html">
+
+      <span class="brand-mark">SA</span>
+
+      <span>
+        <strong>Student Academic Vault</strong>
+        <small>Your academic documents, one secure place.</small>
+      </span>
+
+    </a>
+
+
+    <nav class="vault-nav">
+
+      <a href="dashboard.html">
+        Dashboard
+      </a>
+
+      <a
+        class="active"
+        href="documents.html"
+      >
+        My Vault
+      </a>
+
+      <button
+        id="logoutBtn"
+        class="header-link header-button"
+        type="button"
+      >
+        Log out
+      </button>
+
+    </nav>
+
+  </header>
+
+
+  <!-- ======================================================
+       MAIN VAULT
+       ====================================================== -->
+
+  <main class="vault-main">
+
+    <!-- TOP SECTION -->
+
+    <section class="vault-top float-in">
+
+      <div>
+
+        <span class="eyebrow">
+          MY DOCUMENT VAULT
+        </span>
+
+        <h1>
+          Keep your important academic documents close.
+        </h1>
+
+        <p>
+          Upload, organize, preview and download the files
+          you may need throughout your university journey.
+        </p>
+
+      </div>
+
+
+      <div class="vault-actions">
+
+        <button
+          class="secondary-btn drive-connect-btn"
+          id="connectDriveBtn"
+          type="button"
+        >
+          Connect Google Drive
+        </button>
+
+
+        <button
+          class="primary-btn vault-upload-open"
+          id="openUploadBtn"
+          type="button"
+        >
+
+          <span>
+            Upload document
+          </span>
+
+          <span class="btn-arrow">
+            ＋
+          </span>
+
+        </button>
+
+      </div>
+
+    </section>
+
+
+    <!-- ====================================================
+         DOCUMENT PANEL
+         ==================================================== -->
+
+    <section class="vault-panel float-in">
+
+      <div class="vault-panel-head">
+
+        <div>
+
+          <h2>
+            Your documents
+          </h2>
+
+          <p id="documentCount">
+            Loading your vault...
+          </p>
+
+        </div>
+
+
+        <div class="vault-filter">
+
+          <input
+            id="documentSearch"
+            type="search"
+            placeholder="Search documents"
+            aria-label="Search documents"
+          >
+
+
+          <select
+            id="categoryFilter"
+            aria-label="Filter documents"
+          >
+
+            <option value="all">
+              All categories
+            </option>
+
+            <option value="school">
+              School
+            </option>
+
+            <option value="exam">
+              Exam
+            </option>
+
+            <option value="identity">
+              Identity
+            </option>
+
+            <option value="payment">
+              Payment
+            </option>
+
+            <option value="certificate">
+              Certificate
+            </option>
+
+            <option value="other">
+              Other
+            </option>
+
+          </select>
+
+        </div>
+
+      </div>
+
+
+      <!-- MESSAGE -->
+
+      <div
+        id="vaultMessage"
+        class="form-message"
+        role="status"
+        aria-live="polite"
+      ></div>
+
+
+      <!-- DRIVE STATUS -->
+
+      <div
+        id="driveStatus"
+        class="drive-status"
+      >
+        Connect your Google Drive to store your Vault documents
+        in your own Google account.
+      </div>
+
+
+      <!-- EMPTY STATE -->
+
+      <div
+        id="emptyVault"
+        class="empty-vault"
+      >
+
+        <div class="empty-icon">
+          📂
+        </div>
+
+        <h3>
+          Your vault is empty
+        </h3>
+
+        <p>
+          Upload your first academic document and it will appear here.
+        </p>
+
+        <button
+          class="secondary-btn"
+          id="emptyUploadBtn"
+          type="button"
+        >
+          Upload your first document
+        </button>
+
+      </div>
+
+
+      <!-- DOCUMENT GRID -->
+
+      <div
+        id="documentGrid"
+        class="document-grid"
+        hidden
+      ></div>
+
+    </section>
+
+  </main>
+
+
+  <!-- ======================================================
+       UPLOAD MODAL
+       ====================================================== -->
+
+  <div
+    class="modal-backdrop"
+    id="uploadModal"
+    hidden
+  >
+
+    <section
+      class="upload-modal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="uploadTitle"
+    >
+
+      <button
+        class="modal-close"
+        id="closeUploadBtn"
+        type="button"
+        aria-label="Close upload dialog"
+      >
+        ×
+      </button>
+
+
+      <span class="eyebrow">
+        ADD TO YOUR VAULT
+      </span>
+
+
+      <h2 id="uploadTitle">
+        Upload a document
+      </h2>
+
+
+      <p class="modal-lead">
+        PDF, JPG and PNG files up to 25 MB.
+      </p>
+
+
+      <form id="uploadForm">
+
+        <!-- DOCUMENT NAME -->
+
+        <div class="field">
+
+          <label for="documentName">
+            Document name
+          </label>
+
+          <input
+            id="documentName"
+            type="text"
+            maxlength="100"
+            placeholder="e.g. WAEC Certificate"
+            required
+          >
+
+          <small
+            class="error"
+            data-error-for="documentName"
+          ></small>
+
+        </div>
+
+
+        <!-- CATEGORY -->
+
+        <div class="field">
+
+          <label for="documentCategory">
+            Category
+          </label>
+
+          <select
+            id="documentCategory"
+            required
+          >
+
+            <option value="school">
+              School
+            </option>
+
+            <option value="exam">
+              Exam
+            </option>
+
+            <option value="identity">
+              Identity
+            </option>
+
+            <option value="payment">
+              Payment
+            </option>
+
+            <option value="certificate">
+              Certificate
+            </option>
+
+            <option value="other">
+              Other
+            </option>
+
+          </select>
+
+        </div>
+
+
+        <!-- FILE -->
+
+        <div
+          class="file-drop"
+          id="fileDrop"
+        >
+
+          <input
+            id="documentFile"
+            type="file"
+            accept="application/pdf,image/jpeg,image/png"
+            required
+          >
+
+          <div class="file-drop-icon">
+            ＋
+          </div>
+
+          <strong id="fileLabel">
+            Choose a PDF, JPG or PNG
+          </strong>
+
+          <small id="fileMeta">
+            Maximum file size: 25 MB
+          </small>
+
+        </div>
+
+
+        <!-- PROGRESS -->
+
+        <div
+          class="upload-progress"
+          id="uploadProgress"
+          hidden
+        >
+
+          <div class="progress-track">
+
+            <span id="progressBar"></span>
+
+          </div>
+
+          <small id="progressText">
+            Uploading 0%
+          </small>
+
+        </div>
+
+
+        <!-- SUBMIT -->
+
+        <button
+          class="primary-btn submit-btn"
+          id="uploadBtn"
+          type="submit"
+        >
+
+          <span>
+            Save document
+          </span>
+
+          <span class="btn-arrow">
+            ↑
+          </span>
+
+        </button>
+
+      </form>
+
+    </section>
+
+  </div>
+
+
+  <!-- ======================================================
+       PREVIEW MODAL
+       ====================================================== -->
+
+  <div
+    class="preview-backdrop"
+    id="previewModal"
+    hidden
+  >
+
+    <section class="preview-modal">
+
+      <button
+        class="modal-close"
+        id="closePreviewBtn"
+        type="button"
+        aria-label="Close preview"
+      >
+        ×
+      </button>
+
+      <div id="previewContent"></div>
+
+    </section>
+
+  </div>
+
+
+  <!-- ======================================================
+       FIREBASE
+       ====================================================== -->
+
+  <script src="https://www.gstatic.com/firebasejs/12.1.0/firebase-app-compat.js"></script>
+
+  <script src="https://www.gstatic.com/firebasejs/12.1.0/firebase-auth-compat.js"></script>
+
+  <script src="https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore-compat.js"></script>
+
+
+  <!-- ======================================================
+       GOOGLE IDENTITY SERVICES
+       ====================================================== -->
+
+  <script
+    src="https://accounts.google.com/gsi/client"
+  ></script>
+
+
+  <!-- ======================================================
+       GOOGLE GIS LOAD TEST
+       ====================================================== -->
+
+  <script>
+
+    console.log(
+      "Google GIS test:",
+      window.google?.accounts?.oauth2
+        ? "LOADED"
+        : "NOT LOADED"
+    );
+
+  </script>
+
+
+  <!-- ======================================================
+       STUDENT ACADEMIC VAULT
+       ====================================================== -->
+
+  <script src="firebase.js"></script>
+
+  <script src="google-drive.js"></script>
+
+  <script src="script.js"></script>
+
+
+</body>
+</html>
+
+
+</body>
+</html>

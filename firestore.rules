@@ -1,0 +1,38 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Student profile
+    match /students/{userId} {
+      allow create, read, update: if request.auth != null
+        && request.auth.uid == userId;
+
+      allow delete: if false;
+
+      // Student's document metadata
+      match /documents/{documentId} {
+
+        allow create: if request.auth != null
+          && request.auth.uid == userId
+          && request.resource.data.ownerId == userId;
+
+        allow read: if request.auth != null
+          && request.auth.uid == userId;
+
+        allow update: if request.auth != null
+          && request.auth.uid == userId
+          && resource.data.ownerId == userId
+          && request.resource.data.ownerId == userId;
+
+        allow delete: if request.auth != null
+          && request.auth.uid == userId;
+      }
+    }
+
+    // Everything else stays locked
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
