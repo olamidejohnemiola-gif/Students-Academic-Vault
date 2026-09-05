@@ -1,7 +1,0 @@
-/*
-  Firebase Storage is intentionally NOT used by Student Academic Vault.
-  Student documents are stored in each student's own Google Drive.
-
-  This file is retained only so an old Firebase Storage configuration
-  cannot be mistaken for the active document-storage layer.
-*/
