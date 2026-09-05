@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="description" content="Privacy Policy for Student Academic Vault, operated by Wealth Quest Nest.">
+  <title>Privacy Policy | Student Academic Vault</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="auth-page">
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="Student Academic Vault home">
+      <span class="brand-mark">SA</span>
+      <span>
+        <strong>Student Academic Vault</strong>
+        <small>Your academic documents, one secure place.</small>
+      </span>
+    </a>
+    <a class="header-link" href="index.html">Back to home</a>
+  </header>
+
+  <main class="legal-shell">
+    <article class="auth-card legal-card">
+      <div class="auth-intro">
+        <span class="eyebrow">LEGAL &amp; PRIVACY</span>
+        <h1>Privacy Policy</h1>
+        <p class="legal-updated">Last updated: September 5, 2026</p>
+      </div>
+
+      <div class="legal-notice">
+        <strong>Student Academic Vault is a digital service operated by Wealth Quest Nest.</strong>
+      </div>
+
+      <section class="legal-section">
+        <h2>1. Information collected</h2>
+        <p>Student Academic Vault may collect information that you provide when creating or using an account, including:</p>
+        <ul>
+          <li>Full name</li>
+          <li>Email address</li>
+          <li>Phone number</li>
+          <li>University</li>
+          <li>Matriculation / student ID</li>
+          <li>Firebase Authentication account information</li>
+          <li>Document metadata such as file name, category, file type, size, timestamps, and Google Drive file ID</li>
+        </ul>
+      </section>
+
+      <section class="legal-section">
+        <h2>2. How information is used</h2>
+        <p>Information may be used to:</p>
+        <ul>
+          <li>Create and maintain accounts</li>
+          <li>Authenticate users</li>
+          <li>Associate users with their personal vault</li>
+          <li>Organize and display document metadata</li>
+          <li>Provide requested Google Drive functionality</li>
+          <li>Maintain and improve the platform</li>
+          <li>Protect the platform against unauthorized access and misuse</li>
+        </ul>
+      </section>
+
+      <section class="legal-section">
+        <h2>3. Google Drive</h2>
+        <p>Google Drive is optional. Users choose whether to connect Google Drive to Student Academic Vault.</p>
+        <ul>
+          <li>Google handles its own authentication and authorization.</li>
+          <li>Student Academic Vault does not request or store your Google password.</li>
+          <li>The current implementation uses Google's <code>drive.file</code> permission.</li>
+          <li>OAuth access tokens should not be intentionally stored in the application's Firestore database.</li>
+        </ul>
+        <p>Google's own terms and privacy policies may also apply when you use Google services.</p>
+      </section>
+
+      <section class="legal-section">
+        <h2>4. Document storage</h2>
+        <p>The current implementation does not use Firebase Storage for student documents.</p>
+        <p>Where Google Drive is used, actual documents are stored in the user's Google Drive account. The application may store limited metadata necessary to display and manage the vault.</p>
+      </section>
+
+      <section class="legal-section">
+        <h2>5. Data security</h2>
+        <p>Student Academic Vault uses Firebase Authentication, Firestore security rules, and access controls intended to help protect user information and limit unauthorized access. No online system can be guaranteed to be completely secure, so absolute security is not promised.</p>
+      </section>
+
+      <section class="legal-section">
+        <h2>6. Third parties and service providers</h2>
+        <p>Student Academic Vault uses Firebase services and may integrate with Google services, including Google Drive. These providers may process information according to their own terms, privacy policies, security practices, and applicable settings.</p>
+      </section>
+
+      <section class="legal-section">
+        <h2>7. User choices</h2>
+        <p>Users can choose whether to:</p>
+        <ul>
+          <li>Create a Student Academic Vault account</li>
+          <li>Connect Google Drive</li>
+          <li>Manage their Google Drive files through the available integration</li>
+        </ul>
+      </section>
+
+      <section class="legal-section">
+        <h2>8. Changes to this Privacy Policy</h2>
+        <p>This Privacy Policy may be updated when the platform, its functionality, or applicable requirements change. The latest version will be made available on this website, with the applicable “Last updated” date shown above.</p>
+      </section>
+
+      <section class="legal-section">
+        <h2>9. Contact</h2>
+        <p>For privacy questions or data requests, contact:</p>
+        <address class="legal-contact">
+          <strong>Wealth Quest Nest</strong>
+          <span>Email: <a href="mailto:wealthquestnest01@gmail.com">wealthquestnest01@gmail.com</a></span>
+          <span>WhatsApp: <a href="https://wa.me/2349162505606" target="_blank" rel="noopener noreferrer">09162505606</a></span>
+          <span>Website: <a href="https://wealthquestnest01.netlify.app/" target="_blank" rel="noopener noreferrer">wealthquestnest01.netlify.app</a></span>
+        </address>
+      </section>
+
+      <p class="legal-disclaimer">This Privacy Policy provides general website terms and information and should be professionally reviewed before a major public or commercial launch.</p>
+    </article>
+  </main>
+
+  <footer class="auth-footer legal-footer">
+    <span>© <span id="year"></span> Student Academic Vault</span>
+    <span><a href="terms.html">Terms of Use</a> <a href="privacy.html">Privacy Policy</a></span>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
